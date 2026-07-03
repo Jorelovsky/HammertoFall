@@ -12,7 +12,6 @@ public class PlayerTeam extends Team {
     Player player = Player.getInstance();
     @Override
     public void update(Battle battle, Battle.OpponentIndex opponentIndex) {
-        Scanner scanner = new Scanner(System.in);
         int enemyIndex, skillIndex, damage;
         int i = 0;
         while(i<characters.size()){

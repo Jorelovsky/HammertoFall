@@ -1,6 +1,6 @@
 package teams;
 
-import characters.EnemyBulider;
+import characters.EnemyBuilder;
 
 public class EnemyTeamBuilder {
     private static final int enemyNumberforTest = 3;
@@ -8,7 +8,7 @@ public class EnemyTeamBuilder {
         EnemyTeam enemyTeam = new EnemyTeam();
         int i = 0;
         while(i < enemyNumberforTest) {
-            enemyTeam.addCharacter(EnemyBulider.buildEnemyforTest());
+            enemyTeam.addCharacter(EnemyBuilder.buildEnemyforTest());
             i++;
         }
         return enemyTeam;

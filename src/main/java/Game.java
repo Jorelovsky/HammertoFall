@@ -11,12 +11,8 @@ import teams.EnemyTeamBuilder;
 import teams.PlayerTeam;
 
 public class Game {
-    private final static Game INSTANCE = new Game();
     private Player player;
-    private Game(){}
-    public static Game getInstance(){
-        return INSTANCE;
-    }
+    public Game(){}
     public void init() {
         player = Player.getInstance();
         System.out.println("请输入您的用户名:");
