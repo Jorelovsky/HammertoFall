@@ -6,50 +6,46 @@ import java.util.Scanner;
 
 
 public class Battle {
-    private static Battle instance = new Battle();
+    private static Battle INSTANCE = new Battle();
     private Team teamA, teamB;
     private boolean isBattling = false;
 
     public enum OpponentIndex {
-        TEAMA, TEAMB;
+        TEAMA, TEAMB
     }
 
     public static Battle getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
 
     /**
-     * 指定对战中的A队，下面的setTeamB同理
+     * 指定对战中的A队
      *
      * @param teamA 所指定的队伍
-     * @return 设置成功为true,设置失败为false
      * @throws IllegalArgumentException 如果传入的teamA为null
      */
-    public boolean setTeamA(Team teamA) {
+    public void setTeamA(Team teamA) {
         if (teamA == null) {
-            throw new IllegalArgumentException("这里禁止空气来比赛，谢谢。");
+            throw new IllegalArgumentException("这里禁止空气来比赛喵");
         } else if (isBattling) {
-            return false;
+            throw new RuntimeException("当前无法设置喵。");
         }
         this.teamA = teamA;
-        return true;
     }
     /**
-     * 指定对战中的A队，下面的setTeamB同理
+     * 指定对战中的B队
      *
      * @param teamB 所指定的队伍
-     * @return 设置成功为true,设置失败为false
      * @throws IllegalArgumentException 如果传入的teamA为null
      */
-    public boolean setTeamB(Team teamB) {
+    public void setTeamB(Team teamB) {
         if (teamB == null) {
-            throw new IllegalArgumentException("这里禁止空气来比赛，谢谢。");
+            throw new IllegalArgumentException("这里禁止空气来比赛喵。");
         } else if (isBattling) {
-            return false;
+            throw new RuntimeException("当前无法设置喵。");
         }
         this.teamB = teamB;
-        return true;
     }
 
     /**
@@ -61,7 +57,11 @@ public class Battle {
      */
     public void deliverDamage(OpponentIndex TeamIndex, int index, int damage) {
         Team objectTeam = (TeamIndex == OpponentIndex.TEAMA) ? teamA : teamB;
-        objectTeam.receiveDamage(index, damage);
+        try{
+            objectTeam.receiveDamage(index, damage);
+        }catch (IllegalArgumentException exception){
+            throw exception;
+        }
     }
 
     public void startBattle() {
@@ -70,18 +70,14 @@ public class Battle {
         }
         if (isBattling) return;
         isBattling = true;
-        Scanner scanner = new Scanner(System.in);
         System.out.println("战斗开始！");
         while (isBattling) {
-            teamA.update(this, OpponentIndex.TEAMA);
-            teamB.update(this, OpponentIndex.TEAMB);
+            teamA.update(this, OpponentIndex.TEAMB);
+            teamB.update(this, OpponentIndex.TEAMA);
             if (!(teamA.isTeamAlive() && teamB.isTeamAlive())) {
                 isBattling = false;
             }
-            //FIXME:这里开了两个scanner
-            scanner.nextLine();
         }
         System.out.println("战斗结束！");
-        scanner.close();
     }
 }

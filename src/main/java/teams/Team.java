@@ -11,26 +11,14 @@ public class Team {
 
     public Team() {
     }
-
-    ;
-
-    public Team(Team other) {
-        for (Character character : other.characters) {
-            this.characters.add(character);
-        }
-    }
-
     /**
      * @param newCharacter:待加入角色
-     * @return true 加入成功 false加入失败（队伍已满或角色重复）
      */
-    public boolean addCharacter(Character newCharacter) {
+    public void addCharacter(Character newCharacter) {
         //TODO:判断新加入角色是否与已有角色重复
         if (characters.size() < MAX_CHARACTER_NUMBER) {
             characters.add(newCharacter);
-            return true;
         }
-        return false;
     }
 
     /**
