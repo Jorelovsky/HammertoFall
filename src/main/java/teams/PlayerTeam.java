@@ -9,14 +9,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PlayerTeam extends Team {
-    Player player = Player.getInstance();
+    Player player;
+    public PlayerTeam(Player player){
+        this.player = player;
+    }
     @Override
-    public void update(Battle battle, Battle.OpponentIndex opponentIndex) {
+    public void update(Battle.OpponentIndex opponentIndex) {
+        Battle battle = Battle.getInstance();
         int enemyIndex, skillIndex, damage;
         int i = 0;
         while(i<characters.size()){
             Character character = characters.get(i);
-            System.out.println("指定" + character.getName() + "的行动:");
+            System.out.println("指定" + character.getName() + "的行动喵:");
             String playerCommand = player.getPlayerInput();
             ArrayList<Integer> decodedCommand = PlayerCommandDecoder.CommandDecoder(playerCommand);
             if(decodedCommand.size() != 2){

@@ -7,11 +7,11 @@ import static org.junit.Assert.*;
 public class PlayerTest {
     @Test
     public void initiateTest(){
-        Player player = Player.getInstance();
+        Player player = new Player();
         assertNotNull(player);
     }
     public void inputTest(){
-        Player player = Player.getInstance();
+        Player player = new Player();
         String actual = player.getPlayerInput();
         System.out.println(actual);
     }

@@ -14,10 +14,10 @@ public class Game {
     private Player player;
     public Game(){}
     public void init() {
-        player = Player.getInstance();
-        System.out.println("请输入您的用户名:");
+        player = new Player();
+        System.out.println("请输入您的用户名喵:");
         player.init(player.getPlayerInput());
-        PlayerTeam playerTeam = new PlayerTeam();
+        PlayerTeam playerTeam = new PlayerTeam(player);
         Character hero = CharacterFactory.getCharacter("Involver");
         hero.learnSkill(new GeneralAttack());
         hero.learnSkill(new Smash());

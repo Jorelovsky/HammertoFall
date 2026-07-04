@@ -6,23 +6,18 @@ import java.util.Scanner;
 
 public class Player {
     private String playerName;
-    private Team team = new Team();
-    private static final Player INSTANCE = new Player();
+    private Team team;
     private Scanner inputScanner = new Scanner(System.in);
 
-    private Player() {
+    public Player() {
     }
-    public static Player getInstance(){
-        return INSTANCE;
-    }
-
     /**
      * 初始化玩家账户
      * @param playerName 新建用户名
      */
     public void init(String playerName) {
         this.playerName = playerName;
-        System.out.println(playerName + "加入战场。");
+        System.out.println(playerName + "加入战场喵。");
     }
 
     public void destroy(){

@@ -5,13 +5,11 @@ import characters.Character;
 
 import java.util.ArrayList;
 
-public class Team {
+public abstract class Team {
     private static final int MAX_CHARACTER_NUMBER = 4;
-    protected ArrayList<characters.Character> characters = new ArrayList<characters.Character>();
-
-    public Team() {
-    }
+    protected ArrayList<characters.Character> characters = new ArrayList<>();
     /**
+     * 向队伍中添加角色
      * @param newCharacter:待加入角色
      */
     public void addCharacter(Character newCharacter) {
@@ -22,6 +20,7 @@ public class Team {
     }
 
     /**
+     * 获取队伍角色数
      * @return 返回当前队伍中的角色数
      */
     public int getCharacterNumber() {
@@ -29,8 +28,7 @@ public class Team {
     }
 
     /**
-     * 判断队伍中是否还有人存活。
-     *
+     * 判断队伍中是否还有角色存活。
      * @return true是活着，false是全死了。
      */
     public boolean isTeamAlive() {
@@ -56,10 +54,9 @@ public class Team {
         characters.get(index - 1).receiveDamage(damage);
     }
 
-    public void update(Battle battle, Battle.OpponentIndex opponentIndex) {
-        for (Character character : characters) {
-            int damage = character.getSkill(0).processData(character.getStatus());
-            battle.deliverDamage(opponentIndex, 1, damage);
-        }
-    }
+    /**
+     * 战斗中每回合调用。
+     * @param opponentIndex
+     */
+    public abstract void update(Battle.OpponentIndex opponentIndex);
 }

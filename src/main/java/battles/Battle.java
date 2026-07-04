@@ -66,18 +66,18 @@ public class Battle {
 
     public void startBattle() {
         if (teamA == null || teamB == null) {
-            throw new RuntimeException("请先指定谁来对战。");
+            throw new RuntimeException("请先指定谁来对战喵。");
         }
         if (isBattling) return;
         isBattling = true;
-        System.out.println("战斗开始！");
+        System.out.println("战斗开始喵！");
         while (isBattling) {
-            teamA.update(this, OpponentIndex.TEAMB);
-            teamB.update(this, OpponentIndex.TEAMA);
+            teamA.update(OpponentIndex.TEAMB);
+            teamB.update(OpponentIndex.TEAMA);
             if (!(teamA.isTeamAlive() && teamB.isTeamAlive())) {
                 isBattling = false;
             }
         }
-        System.out.println("战斗结束！");
+        System.out.println("战斗结束喵！");
     }
 }
