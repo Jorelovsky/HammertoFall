@@ -3,6 +3,8 @@ import battles.Battle;
 import characters.Character;
 import characters.CharacterFactory;
 import characters.Involver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import skills.GeneralAttack;
 import skills.Hit;
 import skills.Smash;
@@ -12,12 +14,15 @@ import teams.PlayerTeam;
 
 public class Game {
     private Player player;
+    private static final Logger logger = LoggerFactory.getLogger(Game.class);
     public Game(){}
     public void init() {
         player = new Player();
-        System.out.println("请输入您的用户名喵:");
-        player.init(player.getPlayerInput());
+        logger.info("请输入您的用户名喵:");
+        String username = player.getPlayerInput();
+        player.init(username);
         PlayerTeam playerTeam = new PlayerTeam(player);
+        playerTeam.setName(username + "的队伍");
         Character hero = CharacterFactory.getCharacter("Involver");
         hero.learnSkill(new GeneralAttack());
         hero.learnSkill(new Smash());

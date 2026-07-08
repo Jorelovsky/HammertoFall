@@ -1,5 +1,8 @@
 package characters;
 
+import accounts.Player;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import skills.Skill;
 
 import java.util.ArrayList;
@@ -13,6 +16,7 @@ abstract public class Character {
 
     protected ArrayList<Skill> skills = new ArrayList<Skill>();
 
+    private static final Logger logger = LoggerFactory.getLogger(Character.class);
 
     /**
      * 外部获得角色当前名称
@@ -51,7 +55,7 @@ abstract public class Character {
     public Skill getSkill(int index) {
         if (index < skills.size()) {
             Skill skill = skills.get(index);
-            System.out.println(name + "使用了" + skill.name);
+            logger.info("{}使用了{}瞄", name, skill.name);
             return skill;
         } else throw new IllegalArgumentException("没有这个技能喵");
     }
@@ -67,7 +71,7 @@ abstract public class Character {
             throw new RuntimeException(name + "脑子有限，学不会这么多技能喵");
         } else {
             skills.add(skill);
-            System.out.println(name + "学会了" + skill.name + "喵");
+           logger.info(name + "学会了" + skill.name + "喵");
         }
     }
 

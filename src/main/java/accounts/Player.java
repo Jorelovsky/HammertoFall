@@ -1,14 +1,16 @@
 package accounts;
 
+import org.slf4j.LoggerFactory;
 import teams.Team;
 
 import java.util.Scanner;
+import org.slf4j.Logger;
 
 public class Player {
     private String playerName;
     private Team team;
     private Scanner inputScanner = new Scanner(System.in);
-
+    private static final Logger logger = LoggerFactory.getLogger(Player.class);
     public Player() {
     }
     /**
@@ -17,7 +19,7 @@ public class Player {
      */
     public void init(String playerName) {
         this.playerName = playerName;
-        System.out.println(playerName + "加入战场喵。");
+        logger.info(playerName + "加入战场喵。");
     }
 
     public void destroy(){

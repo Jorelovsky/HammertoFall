@@ -2,14 +2,20 @@ package teams;
 
 import battles.Battle;
 import characters.Character;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 
 public abstract class Team {
+    private String name = "Unnamed";
     private static final int MAX_CHARACTER_NUMBER = 4;
     protected ArrayList<characters.Character> characters = new ArrayList<>();
+    private static final Logger logger = LoggerFactory.getLogger(Team.class);
+
     /**
      * 向队伍中添加角色
+     *
      * @param newCharacter:待加入角色
      */
     public void addCharacter(Character newCharacter) {
@@ -21,6 +27,7 @@ public abstract class Team {
 
     /**
      * 获取队伍角色数
+     *
      * @return 返回当前队伍中的角色数
      */
     public int getCharacterNumber() {
@@ -28,7 +35,26 @@ public abstract class Team {
     }
 
     /**
+     * 设置队伍的名称
+     *
+     * @param name 新名称
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * 获取队伍的名称
+     *
+     * @return 队伍名称
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
      * 判断队伍中是否还有角色存活。
+     *
      * @return true是活着，false是全死了。
      */
     public boolean isTeamAlive() {
@@ -56,7 +82,19 @@ public abstract class Team {
 
     /**
      * 战斗中每回合调用。
+     *
      * @param opponentIndex
      */
     public abstract void update(Battle.OpponentIndex opponentIndex);
+
+    /**
+     * 呈现当前队伍状态
+     */
+    public void presentCharactersInfo() {
+        logger.info(name);
+        for (int i = 0; i < characters.size(); i++) {
+            Character character = characters.get(i);
+            logger.info("{}.{} 生命值: {}", i, character.getName(), character.getStatus().health);
+        }
+    }
 }

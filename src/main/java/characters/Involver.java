@@ -1,9 +1,13 @@
 package characters;
 
+import accounts.Player;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 //Involver是卷狗的意思
 public class Involver extends Character {
     private final double defenceMultiplier = 1.2;
-
+    private static final Logger logger = LoggerFactory.getLogger(Involver.class);
     public Involver() {
         name = "Involver";
         status = new CharacterStatus();
@@ -19,6 +23,6 @@ public class Involver extends Character {
         //Involver承伤机制：实际伤害 = 受到伤害 - 防御力 * 承伤倍率
         int actualDamage = Math.max(0, damage - (int) (status.defense * defenceMultiplier));
         status.health = Math.max(status.LOWEST_HEALTH, status.health - actualDamage);
-        System.out.println(name + "受到" + damage + "的伤害喵！");
+        logger.info(name + "受到" + actualDamage + "的伤害喵！");
     }
 }

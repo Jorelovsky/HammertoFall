@@ -1,5 +1,8 @@
 package battles;
 
+import accounts.Player;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import teams.Team;
 
 import java.util.Scanner;
@@ -9,6 +12,7 @@ public class Battle {
     private static Battle INSTANCE = new Battle();
     private Team teamA, teamB;
     private boolean isBattling = false;
+    private static final Logger logger = LoggerFactory.getLogger(Battle.class);
 
     public enum OpponentIndex {
         TEAMA, TEAMB
@@ -70,14 +74,18 @@ public class Battle {
         }
         if (isBattling) return;
         isBattling = true;
-        System.out.println("战斗开始喵！");
+        logger.info("战斗开始喵！");
         while (isBattling) {
+            teamA.presentCharactersInfo();
+            teamB.presentCharactersInfo();
             teamA.update(OpponentIndex.TEAMB);
             teamB.update(OpponentIndex.TEAMA);
             if (!(teamA.isTeamAlive() && teamB.isTeamAlive())) {
                 isBattling = false;
             }
         }
-        System.out.println("战斗结束喵！");
+        teamA.presentCharactersInfo();
+        teamB.presentCharactersInfo();
+        logger.info("战斗结束喵！");
     }
 }
