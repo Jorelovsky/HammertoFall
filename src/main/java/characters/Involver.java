@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 public class Involver extends Character {
     private final double defenceMultiplier = 1.2;
     private static final Logger logger = LoggerFactory.getLogger(Involver.class);
+
     public Involver() {
         name = "Involver";
         status = new CharacterStatus();

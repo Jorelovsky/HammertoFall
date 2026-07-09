@@ -95,21 +95,22 @@ public class Character {
 
     /**
      * 获取某一级别下升级时各项属性的增益倍率。
+     *
      * @param nowLevel
      * @return
      */
-    public double getLevelUpMultiplier(int nowLevel){
-        if(nowLevel >= MAX_LEVEL) throw new IllegalArgumentException("你已经满级了");
+    public double getLevelUpMultiplier(int nowLevel) {
+        if (nowLevel >= MAX_LEVEL) throw new IllegalArgumentException("你已经满级了");
         return 1.1;//默认的升级属性增益倍率。
     }
 
     //TODO:改成private
-    public void levelUp(){
+    public void levelUp() {
         double multiplier = this.getLevelUpMultiplier(this.level);
-        this.status.attack =(int)( multiplier * this.status.attack);
-        this.status.maxHealth =(int)( multiplier * this.status.maxHealth);
-        this.status.defense =(int)( multiplier * this.status.defense);
-        this.status.fortune =(int)( multiplier * this.status.fortune);
+        this.status.attack = (int) (multiplier * this.status.attack);
+        this.status.maxHealth = (int) (multiplier * this.status.maxHealth);
+        this.status.defense = (int) (multiplier * this.status.defense);
+        this.status.fortune = (int) (multiplier * this.status.fortune);
         this.level++;
     }
 
@@ -118,7 +119,7 @@ public class Character {
      *
      * @param damage 受到的伤害
      */
-    public void receiveDamage(int damage){
+    public void receiveDamage(int damage) {
         int actualDamage = Math.max(0, damage - status.defense);
         status.health = Math.max(status.LOWEST_HEALTH, status.health - actualDamage);
         logger.info("{}受到{}的伤害喵！", name, actualDamage);

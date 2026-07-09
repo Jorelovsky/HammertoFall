@@ -6,7 +6,6 @@ abstract public class Skill {
     protected String name;
 
 
-
     SkillType type;
 
     public static void init() {
@@ -21,9 +20,11 @@ abstract public class Skill {
     public String getName() {
         return name;
     }
-    public SkillType getType(){
+
+    public SkillType getType() {
         return type;
     }
+
     /**
      *
      * @param status 角色面板

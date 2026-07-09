@@ -5,7 +5,7 @@ import skills.Hit;
 import skills.Smash;
 
 public class EnemyBuilder {
-    public static characters.Character buildEnemyforTest(){
+    public static characters.Character buildEnemyforTest() {
         characters.Character enemy = CharacterFactory.getCharacter("Involver");
         enemy.learnSkill(new Hit());
         enemy.learnSkill(new Smash());

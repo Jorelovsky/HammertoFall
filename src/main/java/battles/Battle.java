@@ -33,6 +33,7 @@ public class Battle {
         }
         this.teamA = teamA;
     }
+
     /**
      * 指定对战中的B队
      *
@@ -48,14 +49,14 @@ public class Battle {
         this.teamB = teamB;
     }
 
-    public Team getTeam(TeamIndex index){
-        return index==TeamIndex.TEAMA?teamA:teamB;
+    public Team getTeam(TeamIndex index) {
+        return index == TeamIndex.TEAMA ? teamA : teamB;
     }
 
-    public void deliverSkill(TeamIndex teamIndex, int receiverIndex, SkillType type, int skillImpact){
+    public void deliverSkill(TeamIndex teamIndex, int receiverIndex, SkillType type, int skillImpact) {
         Team objectTeam = this.getTeam(type.getReceiverIndex(teamIndex));
         Character character = objectTeam.getCharacter(receiverIndex);
-        switch (type){
+        switch (type) {
             case SkillType.ATTACK -> character.receiveDamage(skillImpact);
             case SkillType.HEAL -> character.receiveHealing(skillImpact);
         }

@@ -52,7 +52,7 @@ public abstract class Team {
         return name;
     }
 
-    public Character getCharacter(int index){
+    public Character getCharacter(int index) {
         return characters.get(index);
     }
 
