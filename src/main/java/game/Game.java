@@ -1,14 +1,15 @@
+package game;
+
 import accounts.Player;
 import battles.Battle;
 import characters.Character;
 import characters.CharacterFactory;
-import characters.Involver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import skills.GeneralAttack;
 import skills.Hit;
+import skills.Skill;
 import skills.Smash;
-import teams.EnemyTeam;
 import teams.EnemyTeamBuilder;
 import teams.PlayerTeam;
 
@@ -29,6 +30,7 @@ public class Game {
         hero.learnSkill(new Hit());
         playerTeam.addCharacter(hero);
         player.setTeam(playerTeam);
+        Skill.init();
     }
     public void start(){
         Battle battle = Battle.getInstance();

@@ -1,27 +1,23 @@
 package battles;
 
-import accounts.Player;
+import characters.Character;
+import characters.CharacterStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import skills.Skill;
+import skills.SkillType;
 import teams.Team;
 
-import java.util.Scanner;
-
-
 public class Battle {
-    private static Battle INSTANCE = new Battle();
+    private static final Battle INSTANCE = new Battle();
     private Team teamA, teamB;
     private boolean isBattling = false;
     private static final Logger logger = LoggerFactory.getLogger(Battle.class);
 
-    public enum OpponentIndex {
-        TEAMA, TEAMB
-    }
 
     public static Battle getInstance() {
         return INSTANCE;
     }
-
 
     /**
      * 指定对战中的A队
@@ -52,21 +48,19 @@ public class Battle {
         this.teamB = teamB;
     }
 
-    /**
-     * 将调用该方法的Team造成的伤害传递到目标Team
-     *
-     * @param TeamIndex 承受伤害的Team
-     * @param index     承受伤害的角色
-     * @param damage    造成的伤害
-     */
-    public void deliverDamage(OpponentIndex TeamIndex, int index, int damage) {
-        Team objectTeam = (TeamIndex == OpponentIndex.TEAMA) ? teamA : teamB;
-        try{
-            objectTeam.receiveDamage(index, damage);
-        }catch (IllegalArgumentException exception){
-            throw exception;
+    public Team getTeam(TeamIndex index){
+        return index==TeamIndex.TEAMA?teamA:teamB;
+    }
+
+    public void deliverSkill(TeamIndex teamIndex, int receiverIndex, SkillType type, int skillImpact){
+        Team objectTeam = this.getTeam(type.getReceiverIndex(teamIndex));
+        Character character = objectTeam.getCharacter(receiverIndex);
+        switch (type){
+            case SkillType.ATTACK -> character.receiveDamage(skillImpact);
+            case SkillType.HEAL -> character.receiveHealing(skillImpact);
         }
     }
+
 
     public void startBattle() {
         if (teamA == null || teamB == null) {
@@ -78,8 +72,8 @@ public class Battle {
         while (isBattling) {
             teamA.presentCharactersInfo();
             teamB.presentCharactersInfo();
-            teamA.update(OpponentIndex.TEAMB);
-            teamB.update(OpponentIndex.TEAMA);
+            teamA.update(TeamIndex.TEAMA);
+            teamB.update(TeamIndex.TEAMB);
             if (!(teamA.isTeamAlive() && teamB.isTeamAlive())) {
                 isBattling = false;
             }

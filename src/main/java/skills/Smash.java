@@ -7,6 +7,7 @@ public class Smash extends Skill {
 
     public Smash() {
         name = "Smash";
+        type = SkillType.ATTACK;
     }
 
     @Override

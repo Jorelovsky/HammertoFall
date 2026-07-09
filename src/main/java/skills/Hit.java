@@ -7,6 +7,7 @@ public class Hit extends Skill {
 
     public Hit() {
         name = "Hit";
+        type = SkillType.ATTACK;
     }
 
     @Override

@@ -3,8 +3,27 @@ package skills;
 import characters.CharacterStatus;
 
 abstract public class Skill {
-    public String name;
+    protected String name;
 
+
+
+    SkillType type;
+
+    public static void init() {
+
+    }
+
+    /**
+     * 获取技能名称
+     *
+     * @return 技能的名称
+     */
+    public String getName() {
+        return name;
+    }
+    public SkillType getType(){
+        return type;
+    }
     /**
      *
      * @param status 角色面板

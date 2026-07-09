@@ -7,7 +7,7 @@ import skills.Skill;
 
 import java.util.ArrayList;
 
-abstract public class Character {
+public class Character {
     protected String name;
 
     protected final int MAX_SKILL_NUMBER = 4;
@@ -50,18 +50,19 @@ abstract public class Character {
      *
      * @param index 要获取的技能编号，从0开始
      * @return 所获取的技能
-     * @exception IllegalArgumentException 传入的index为负数或大于拥有技能数-1
+     * @throws IllegalArgumentException 传入的index为负数或大于拥有技能数-1
      */
     public Skill getSkill(int index) {
         if (index < skills.size()) {
             Skill skill = skills.get(index);
-            logger.info("{}使用了{}瞄", name, skill.name);
+            logger.info("{}使用了{}瞄", name, skill.getName());
             return skill;
         } else throw new IllegalArgumentException("没有这个技能喵");
     }
 
     /**
      * 让角色学习技能
+     *
      * @param skill 外部传入的技能
      */
     public void learnSkill(Skill skill) {
@@ -71,7 +72,7 @@ abstract public class Character {
             throw new RuntimeException(name + "脑子有限，学不会这么多技能喵");
         } else {
             skills.add(skill);
-           logger.info(name + "学会了" + skill.name + "喵");
+            logger.info(name + "学会了" + skill.getName() + "喵");
         }
     }
 
@@ -89,5 +90,16 @@ abstract public class Character {
      *
      * @param damage 受到的伤害
      */
-    abstract public void receiveDamage(int damage);
+    public void receiveDamage(int damage){
+        int actualDamage = Math.max(0, damage - status.defense);
+        status.health = Math.max(status.LOWEST_HEALTH, status.health - actualDamage);
+        logger.info("{}受到{}的伤害喵！", name, actualDamage);
+    }
+
+    public void receiveHealing(int healing) {
+        this.status.health = Math.min(this.status.maxHealth, this.status.health + healing);
+        logger.info("{}受到{}的治疗喵！", name, healing);
+    }
+
+    ;
 }

@@ -5,6 +5,7 @@ import characters.CharacterStatus;
 public class GeneralAttack extends Skill {
     public GeneralAttack() {
         name = "GeneralAttack";
+        type = SkillType.ATTACK;
     }
 
     @Override

@@ -6,9 +6,10 @@ import battles.Battle;
 import characters.Character;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import skills.Skill;
+import battles.TeamIndex;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class PlayerTeam extends Team {
     Player player;
@@ -17,9 +18,10 @@ public class PlayerTeam extends Team {
     }
     private static final Logger logger = LoggerFactory.getLogger(PlayerTeam.class);
     @Override
-    public void update(Battle.OpponentIndex opponentIndex) {
+    public void update(TeamIndex teamIndex) {
         Battle battle = Battle.getInstance();
-        int enemyIndex, skillIndex, damage;
+        int receiverIndex, skillIndex, skillImpact;
+        Skill skill;
         int i = 0;
         while(i<characters.size()){
             Character character = characters.get(i);
@@ -31,20 +33,11 @@ public class PlayerTeam extends Team {
                 continue;//输入不合法，i不增加，此轮循环再来一次，下同。
             }
             //TODO:改掉这里0和1的魔法值。
-            enemyIndex = decodedCommand.get(0);
+            receiverIndex = decodedCommand.get(0);
             skillIndex = decodedCommand.get(1);
-            try {
-                damage = character.getSkill(skillIndex - 1).processData(character.getStatus());
-            }catch (IllegalArgumentException exception){
-                logger.warn(exception.getMessage() + ",请重新输入喵");
-                continue;
-            }
-            try{
-                battle.deliverDamage(opponentIndex, enemyIndex, damage);
-            }catch (IllegalArgumentException exception){
-                logger.warn(exception.getMessage() + ",请重新输入喵");
-                continue;
-            }
+            skill = character.getSkill(skillIndex);
+            skillImpact = skill.processData(character.getStatus());
+            battle.deliverSkill(teamIndex, receiverIndex, skill.getType(), skillImpact);
             i++;
         }
     }

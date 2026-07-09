@@ -23,6 +23,6 @@ public class Involver extends Character {
         //Involver承伤机制：实际伤害 = 受到伤害 - 防御力 * 承伤倍率
         int actualDamage = Math.max(0, damage - (int) (status.defense * defenceMultiplier));
         status.health = Math.max(status.LOWEST_HEALTH, status.health - actualDamage);
-        logger.info(name + "受到" + actualDamage + "的伤害喵！");
+        logger.info("{}受到{}的伤害喵！", name, actualDamage);
     }
 }

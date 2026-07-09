@@ -1,9 +1,9 @@
 package teams;
 
-import battles.Battle;
 import characters.Character;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import battles.TeamIndex;
 
 import java.util.ArrayList;
 
@@ -52,6 +52,10 @@ public abstract class Team {
         return name;
     }
 
+    public Character getCharacter(int index){
+        return characters.get(index);
+    }
+
     /**
      * 判断队伍中是否还有角色存活。
      *
@@ -67,25 +71,11 @@ public abstract class Team {
     }
 
     /**
-     * 此方法用于接受Battle传递来的伤害
-     *
-     * @param damage 伤害数值
-     * @param index  伤害接受者的序号，从1到4
-     * @throws IllegalArgumentException 如果rank所指代的角色为空
-     */
-    public void receiveDamage(int index, int damage) {
-        if (index > characters.size()) {
-            throw new IllegalArgumentException("这里禁止攻击空气。");
-        }
-        characters.get(index - 1).receiveDamage(damage);
-    }
-
-    /**
      * 战斗中每回合调用。
      *
-     * @param opponentIndex
+     * @param teamIndex 队伍的标识
      */
-    public abstract void update(Battle.OpponentIndex opponentIndex);
+    public abstract void update(TeamIndex teamIndex);
 
     /**
      * 呈现当前队伍状态
