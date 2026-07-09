@@ -1,0 +1,27 @@
+import characters.Character;
+import characters.CharacterFactory;
+import characters.CharacterStatus;
+import characters.EnemyBuilder;
+
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class CharacterTest {
+    private static final Logger logger = LoggerFactory.getLogger(CharacterTest.class);
+    @Test
+    public void testLevelup(){
+        Character character = EnemyBuilder.buildEnemyforTest();
+        while(Boolean.TRUE)
+        {
+            try{
+                character.levelUp();
+                CharacterStatus status = character.getStatus();
+                logger.info("Level:{} Attack:{} Defense:{} MaxHealth:{} Fortune:{}",
+                        character.getLevel(),status.attack, status.defense, status.maxHealth, status.fortune);
+            }catch (IllegalArgumentException e){
+                return;
+            }
+        }
+    }
+}

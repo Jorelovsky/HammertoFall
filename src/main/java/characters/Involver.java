@@ -11,11 +11,11 @@ public class Involver extends Character {
     public Involver() {
         name = "Involver";
         status = new CharacterStatus();
-        status.maxHealth = 100;
+        status.maxHealth = 1000;
         status.health = status.maxHealth;
-        status.attack = 10;
-        status.defense = 5;
-        status.fortune = 5;
+        status.attack = 100;
+        status.defense = 50;
+        status.fortune = 50;
     }
 
     @Override

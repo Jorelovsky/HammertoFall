@@ -12,6 +12,10 @@ public class Character {
 
     protected final int MAX_SKILL_NUMBER = 4;
 
+    protected int level = 1;
+
+    protected final int MAX_LEVEL = 100;
+
     protected CharacterStatus status;
 
     protected ArrayList<Skill> skills = new ArrayList<Skill>();
@@ -83,6 +87,30 @@ public class Character {
      */
     public CharacterStatus getStatus() {
         return status;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    /**
+     * 获取某一级别下升级时各项属性的增益倍率。
+     * @param nowLevel
+     * @return
+     */
+    public double getLevelUpMultiplier(int nowLevel){
+        if(nowLevel >= MAX_LEVEL) throw new IllegalArgumentException("你已经满级了");
+        return 1.1;//默认的升级属性增益倍率。
+    }
+
+    //TODO:改成private
+    public void levelUp(){
+        double multiplier = this.getLevelUpMultiplier(this.level);
+        this.status.attack =(int)( multiplier * this.status.attack);
+        this.status.maxHealth =(int)( multiplier * this.status.maxHealth);
+        this.status.defense =(int)( multiplier * this.status.defense);
+        this.status.fortune =(int)( multiplier * this.status.fortune);
+        this.level++;
     }
 
     /**

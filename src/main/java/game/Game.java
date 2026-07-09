@@ -6,10 +6,7 @@ import characters.Character;
 import characters.CharacterFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import skills.GeneralAttack;
-import skills.Hit;
-import skills.Skill;
-import skills.Smash;
+import skills.*;
 import teams.EnemyTeamBuilder;
 import teams.PlayerTeam;
 
@@ -28,6 +25,7 @@ public class Game {
         hero.learnSkill(new GeneralAttack());
         hero.learnSkill(new Smash());
         hero.learnSkill(new Hit());
+        hero.learnSkill(new Heal());
         playerTeam.addCharacter(hero);
         player.setTeam(playerTeam);
         Skill.init();
