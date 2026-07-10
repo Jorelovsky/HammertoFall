@@ -7,4 +7,15 @@ public class CharacterStatus {
     public int attack;
     public int defense;
     public int fortune;
+
+    public CharacterStatus() {
+    }
+
+    public CharacterStatus(CharacterStatus status) {
+        this.maxHealth = status.maxHealth;
+        this.health = status.health;
+        this.attack = status.attack;
+        this.defense = status.defense;
+        this.fortune = status.fortune;
+    }
 }

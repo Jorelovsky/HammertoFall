@@ -1,6 +1,5 @@
 {
   "Involver": {
-    "name": "Involver",
     "maxHealth": 1000,
     "attack": 100,
     "defense": 50,

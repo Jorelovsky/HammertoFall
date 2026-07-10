@@ -82,8 +82,8 @@ public abstract class Team {
      */
     public void presentCharactersInfo() {
         logger.info(name);
-        for (int i = 0; i < characters.size(); i++) {
-            Character character = characters.get(i);
+        for (int i = 0; i < this.characters.size(); i++) {
+            Character character = this.characters.get(i);
             logger.info("{}.{} 生命值: {}", i, character.getName(), character.getStatus().health);
         }
     }

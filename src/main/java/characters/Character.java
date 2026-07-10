@@ -80,11 +80,16 @@ public class Character {
         }
     }
 
+    public void setStatus(CharacterStatus status) {
+        this.status = status;
+    }
+
     /**
      * 外部获取角色面板
      *
      * @return 该角色的面板
      */
+
     public CharacterStatus getStatus() {
         return status;
     }
