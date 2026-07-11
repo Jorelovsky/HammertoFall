@@ -1,6 +1,5 @@
 package characters;
 
-import accounts.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import skills.Skill;
@@ -18,7 +17,7 @@ public class Character {
 
     protected CharacterStatus status;
 
-    protected ArrayList<Skill> skills = new ArrayList<Skill>();
+    protected ArrayList<Skill> skills = new ArrayList<>();
 
     private static final Logger logger = LoggerFactory.getLogger(Character.class);
 
@@ -111,8 +110,8 @@ public class Character {
     /**
      * 获取某一级别下升级时各项属性的增益倍率。
      *
-     * @param nowLevel
-     * @return
+     * @param nowLevel 当前等级
+     * @return 升级增益倍率
      */
     public double getLevelUpMultiplier(int nowLevel) {
         if (nowLevel >= MAX_LEVEL) throw new IllegalArgumentException("你已经满级了");

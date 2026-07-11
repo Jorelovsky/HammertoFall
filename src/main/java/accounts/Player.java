@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 public class Player {
     private String playerName;
     private Team team;
-    private Scanner inputScanner = new Scanner(System.in);
+    private final Scanner inputScanner = new Scanner(System.in);
     private static final Logger logger = LoggerFactory.getLogger(Player.class);
 
     public Player() {
@@ -33,7 +33,7 @@ public class Player {
     /**
      * 设置玩家所拥有的队伍
      *
-     * @param team
+     * @param team 新队伍
      */
     public void setTeam(Team team) {
         this.team = team;
@@ -54,7 +54,6 @@ public class Player {
      * @return 玩家输入的一整行内容
      */
     public String getPlayerInput() {
-        String input = inputScanner.nextLine();
-        return input;
+        return inputScanner.nextLine();;
     }
 }

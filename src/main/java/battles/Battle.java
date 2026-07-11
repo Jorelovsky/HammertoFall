@@ -1,10 +1,8 @@
 package battles;
 
 import characters.Character;
-import characters.CharacterStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import skills.Skill;
 import skills.SkillType;
 import teams.Team;
 

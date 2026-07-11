@@ -1,8 +1,5 @@
 package skills;
 
-import characters.Involver;
-import characters.Napoleon;
-
 public class SkillFactory {
 
     /**
