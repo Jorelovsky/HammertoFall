@@ -15,7 +15,8 @@ public class Napoleon extends Character{
 
     @Override
     public void receiveDamage(int damage) {
-        int actualDamage = Math.max(0, damage - (status.defense ));
+        //Napoleon承伤机制：实际伤害 = 受到伤害 - （防御力 + 幸运值） * 承伤倍率
+        int actualDamage = (int) Math.max(0, damage - (status.defense + status.fortune) * status.defenseMultiplier);
         this.status.health = Math.max(this.status.health - actualDamage, this.status.LOWEST_HEALTH);
         logger.info("{}受到{}的伤害喵！", name, actualDamage);
     }
