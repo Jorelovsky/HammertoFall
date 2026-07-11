@@ -8,6 +8,7 @@ public class CharacterStatus {
     public int defense;
     public int fortune;
     public double defenseMultiplier;
+
     public CharacterStatus() {
     }
 

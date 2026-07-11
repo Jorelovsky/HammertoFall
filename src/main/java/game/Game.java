@@ -18,6 +18,9 @@ public class Game {
     public Game() {
     }
 
+    /**
+     * 初始化游戏
+     */
     public void init() {
         player = new Player();
         logger.info("请输入您的用户名喵:");
@@ -36,6 +39,9 @@ public class Game {
         Skill.init();
     }
 
+    /**
+     * 开始游戏
+     */
     public void start() {
         Battle battle = Battle.getInstance();
         battle.setTeamA(player.getTeam());
@@ -43,6 +49,9 @@ public class Game {
         battle.startBattle();
     }
 
+    /**
+     * 结束游戏
+     */
     public void end() {
         player.destroy();
     }

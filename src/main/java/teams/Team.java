@@ -52,6 +52,12 @@ public abstract class Team {
         return name;
     }
 
+    /**
+     * 根据序号获取队伍中角色
+     *
+     * @param index 角色在队伍中的序号
+     * @return 序号对应的角色
+     */
     public Character getCharacter(int index) {
         return characters.get(index);
     }

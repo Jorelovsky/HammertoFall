@@ -9,7 +9,7 @@ public class Involver extends Character {
 
     public Involver() {
         this.name = "Involver";
-        this.status = new CharacterStatus(CharacterData.characterStatusFactory(this.name));
+        this.status = new CharacterStatus(CharacterData.getcharacterStatus(this.name));
         this.status.health = this.status.maxHealth;
 
     }

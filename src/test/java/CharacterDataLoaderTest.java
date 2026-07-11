@@ -13,7 +13,7 @@ public class CharacterDataLoaderTest {
     @Test
     public void testLoadData() {
         CharacterData.init();
-        CharacterStatus status = CharacterData.characterStatusFactory("Involver");
+        CharacterStatus status = CharacterData.getcharacterStatus("Involver");
         assertNotNull(status);
         assertEquals(1000, status.maxHealth);
     }

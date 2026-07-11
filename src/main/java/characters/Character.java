@@ -80,6 +80,11 @@ public class Character {
         }
     }
 
+    /**
+     * 设置角色的面板
+     *
+     * @param status 新面板
+     */
     public void setStatus(CharacterStatus status) {
         this.status = status;
     }
@@ -94,6 +99,11 @@ public class Character {
         return status;
     }
 
+    /**
+     * 获取角色当前等级
+     *
+     * @return 角色当前等级
+     */
     public int getLevel() {
         return level;
     }
@@ -110,6 +120,10 @@ public class Character {
     }
 
     //TODO:改成private
+
+    /**
+     * 角色升级
+     */
     public void levelUp() {
         double multiplier = this.getLevelUpMultiplier(this.level);
         this.status.attack = (int) (multiplier * this.status.attack);
@@ -130,10 +144,13 @@ public class Character {
         logger.info("{}受到{}的伤害喵！", name, actualDamage);
     }
 
+    /**
+     * 角色受治疗机制
+     *
+     * @param healing 受到的治疗
+     */
     public void receiveHealing(int healing) {
         this.status.health = Math.min(this.status.maxHealth, this.status.health + healing);
         logger.info("{}受到{}的治疗喵！", name, healing);
     }
-
-    ;
 }

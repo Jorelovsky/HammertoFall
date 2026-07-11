@@ -8,7 +8,7 @@ public class Napoleon extends Character{
 
     public Napoleon() {
         this.name = "Napoleon";
-        this.status = new CharacterStatus(CharacterData.characterStatusFactory(this.name));
+        this.status = new CharacterStatus(CharacterData.getcharacterStatus(this.name));
         this.status.health = this.status.maxHealth;
 
     }

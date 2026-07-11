@@ -49,10 +49,24 @@ public class Battle {
         this.teamB = teamB;
     }
 
+    /**
+     * 根据队伍索引获得当前对战对应的队伍
+     *
+     * @param index 队伍索引
+     * @return 当前对战对应的队伍
+     */
     public Team getTeam(TeamIndex index) {
         return index == TeamIndex.TEAMA ? teamA : teamB;
     }
 
+    /**
+     * 执行角色技能的效果
+     *
+     * @param teamIndex     技能由哪一队发出
+     * @param receiverIndex 技能效果承受者在其所在队伍中的序号
+     * @param type          技能类型
+     * @param skillImpact   技能造成的影响（伤害、治疗）
+     */
     public void deliverSkill(TeamIndex teamIndex, int receiverIndex, SkillType type, int skillImpact) {
         Team objectTeam = this.getTeam(type.getReceiverIndex(teamIndex));
         Character character = objectTeam.getCharacter(receiverIndex);
@@ -62,7 +76,9 @@ public class Battle {
         }
     }
 
-
+    /**
+     * 开始战斗
+     */
     public void startBattle() {
         if (teamA == null || teamB == null) {
             throw new RuntimeException("请先指定谁来对战喵。");

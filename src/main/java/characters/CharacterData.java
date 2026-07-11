@@ -2,26 +2,21 @@ package characters;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class CharacterData {
     static final String dataPath = "CharactersData.json";
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final HashMap<String, CharacterStatus> characterData = new HashMap<>();
-    private static final Logger logger = LoggerFactory.getLogger(CharacterData.class);
     private final static ArrayList<String> CharacterNameList =
             new ArrayList<>();
 
-    public ArrayList<String> getCharacterNameList() {
-        return CharacterNameList;
-    }
-
+    /**
+     * 初始化CharacterData，读取角色数据。
+     */
     public static void init() {
         JsonNode data = null;
         try {
@@ -32,12 +27,11 @@ public class CharacterData {
         if (data != null) {
             JsonNode singleCharacterData, nameList;
             nameList = data.path("name");
-            if(nameList.isArray()){
-                for(JsonNode name:nameList){
+            if (nameList.isArray()) {
+                for (JsonNode name : nameList) {
                     CharacterNameList.add(name.asText());
                 }
-            }
-            else{
+            } else {
                 throw new RuntimeException("文件不完整");
             }
             for (String name : CharacterNameList) {
@@ -54,13 +48,25 @@ public class CharacterData {
         }
     }
 
+    /**
+     * 从Json文件中读取角色数据
+     *
+     * @return 读取到的Json文件
+     * @throws Exception
+     */
     private static JsonNode loadData() throws Exception {
         InputStream inputStream = Thread.currentThread().
                 getContextClassLoader().getResourceAsStream(dataPath);
         return mapper.readTree(inputStream);
     }
 
-    public static CharacterStatus characterStatusFactory(String name) {
+    /**
+     * 获得对应角色的基础面板
+     *
+     * @param name 角色名称
+     * @return 基础面板
+     */
+    public static CharacterStatus getcharacterStatus(String name) {
         CharacterStatus result = null;
         result = characterData.get(name);
         return result;
