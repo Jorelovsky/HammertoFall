@@ -28,6 +28,10 @@ public class PlayerTeam extends Team {
         int i = 0;
         while (i < characters.size()) {
             Character character = characters.get(i);
+            if(!character.isAlive()) {
+                i++;
+                continue;
+            }
             logger.info("指定{}的行动喵:", character.getName());
             String playerCommand = player.getPlayerInput();
             ArrayList<Integer> decodedCommand = PlayerCommandDecoder.CommandDecoder(playerCommand);
