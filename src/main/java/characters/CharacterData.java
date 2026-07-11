@@ -16,7 +16,7 @@ public class CharacterData {
     private static final HashMap<String, CharacterStatus> characterData = new HashMap<>();
     private static final Logger logger = LoggerFactory.getLogger(CharacterData.class);
     private final static ArrayList<String> CharacterNameList =
-            new ArrayList<>(Arrays.asList("Involver"));
+            new ArrayList<>();
 
     public ArrayList<String> getCharacterNameList() {
         return CharacterNameList;
@@ -30,7 +30,16 @@ public class CharacterData {
             //TODO:处理这个异常。
         }
         if (data != null) {
-            JsonNode singleCharacterData;
+            JsonNode singleCharacterData, nameList;
+            nameList = data.path("name");
+            if(nameList.isArray()){
+                for(JsonNode name:nameList){
+                    CharacterNameList.add(name.asText());
+                }
+            }
+            else{
+                throw new RuntimeException("文件不完整");
+            }
             for (String name : CharacterNameList) {
                 singleCharacterData = data.path(name);
                 CharacterStatus status = new CharacterStatus();

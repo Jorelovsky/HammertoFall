@@ -1,6 +1,7 @@
 package characters;
 
 public class CharacterFactory {
+
     /**
      *
      * @param characterIndex 要获取的角色的名字
@@ -12,6 +13,8 @@ public class CharacterFactory {
             throw new IllegalArgumentException("这里禁止输入null，谢谢。");
         } else if (characterIndex.equals("Involver")) {
             return new Involver();
+        } else if (characterIndex.equals("Napoleon")){
+            return new Napoleon();
         }
         throw new IllegalArgumentException("查无此人");
     }

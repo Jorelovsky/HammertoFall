@@ -26,7 +26,7 @@ public class Game {
         CharacterData.init();
         PlayerTeam playerTeam = new PlayerTeam(player);
         playerTeam.setName(username + "的队伍");
-        Character hero = CharacterFactory.getCharacter("Involver");
+        Character hero = CharacterFactory.getCharacter("Napoleon");
         hero.learnSkill(new GeneralAttack());
         hero.learnSkill(new Smash());
         hero.learnSkill(new Hit());
