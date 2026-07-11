@@ -4,12 +4,14 @@
     "maxHealth": 1000,
     "attack": 50,
     "defense": 20,
-    "fortune": 10
+    "fortune": 10,
+    "defenseMultiplier": 1.2
   },
   "Napoleon": {
     "maxHealth": 3000,
     "attack": 200,
     "defense": 50,
-    "fortune": 15
+    "fortune": 15,
+    "defenseMultiplier": 1.8
   }
 }

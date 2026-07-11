@@ -47,6 +47,7 @@ public class CharacterData {
                 status.attack = singleCharacterData.get("attack").asInt();
                 status.defense = singleCharacterData.get("defense").asInt();
                 status.fortune = singleCharacterData.get("fortune").asInt();
+                status.defenseMultiplier = singleCharacterData.get("defenseMultiplier").asDouble();
                 status.health = 0;
                 characterData.put(name, status);
             }

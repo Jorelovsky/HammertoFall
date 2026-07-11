@@ -7,7 +7,7 @@ public class CharacterStatus {
     public int attack;
     public int defense;
     public int fortune;
-
+    public double defenseMultiplier;
     public CharacterStatus() {
     }
 
@@ -17,5 +17,6 @@ public class CharacterStatus {
         this.attack = status.attack;
         this.defense = status.defense;
         this.fortune = status.fortune;
+        this.defenseMultiplier = status.defenseMultiplier;
     }
 }
