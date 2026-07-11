@@ -23,7 +23,7 @@ public class Player {
      */
     public void init(String playerName) {
         this.playerName = playerName;
-        logger.info(playerName + "加入战场喵。");
+        logger.info("{}加入战场喵。", playerName);
     }
 
     public void destroy() {
@@ -54,6 +54,7 @@ public class Player {
      * @return 玩家输入的一整行内容
      */
     public String getPlayerInput() {
-        return inputScanner.nextLine();;
+        String input = inputScanner.nextLine();
+        return input;
     }
 }
