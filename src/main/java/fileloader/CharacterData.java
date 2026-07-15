@@ -1,17 +1,15 @@
-package characters;
+package fileloader;
 
+import characters.CharacterStatus;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import fileloader.DataLoader;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CharacterData {
     private static final String dataPath = "CharactersData.json";
     private static final HashMap<String, CharacterStatus> characterData = new HashMap<>();
-    private final static ArrayList<String> CharacterNameList =
+    private final static ArrayList<String> characterNameList =
             new ArrayList<>();
     /**
      * 初始化CharacterData，读取角色数据。
@@ -28,12 +26,12 @@ public class CharacterData {
             nameList = data.path("name");
             if (nameList.isArray()) {
                 for (JsonNode name : nameList) {
-                    CharacterNameList.add(name.asText());
+                    characterNameList.add(name.asText());
                 }
             } else {
                 throw new RuntimeException("文件不完整");
             }
-            for (String name : CharacterNameList) {
+            for (String name : characterNameList) {
                 singleCharacterData = data.path(name);
                 CharacterStatus status = new CharacterStatus();
                 status.maxHealth = singleCharacterData.get("maxHealth").asInt();

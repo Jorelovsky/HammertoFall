@@ -1,4 +1,4 @@
-import characters.CharacterData;
+import fileloader.CharacterData;
 import characters.CharacterStatus;
 import org.junit.Test;
 import org.slf4j.Logger;

@@ -3,7 +3,7 @@ package game;
 import accounts.Player;
 import battles.Battle;
 import characters.Character;
-import characters.CharacterData;
+import fileloader.CharacterData;
 import characters.CharacterFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

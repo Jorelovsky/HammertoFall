@@ -1,4 +1,15 @@
 {
   "name": ["GeneralAttack", "Heal", "Hit", "Smash"],
-  "General"
+  "GeneralAttack": {
+    "Multiplier": 1.0
+  },
+  "Heal": {
+    "Multiplier": 1.0
+  },
+  "Hit": {
+    "Multiplier": 1.5
+  },
+  "Smash": {
+    "Multiplier": 3.0
+  }
 }
