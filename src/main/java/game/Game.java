@@ -5,6 +5,7 @@ import battles.Battle;
 import characters.Character;
 import fileloader.CharacterData;
 import characters.CharacterFactory;
+import fileloader.SkillData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import skills.*;
@@ -26,6 +27,7 @@ public class Game {
         logger.info("请输入您的用户名喵:");
         String username = player.getPlayerInput();
         CharacterData.init();
+        SkillData.init();
         player.init(username);
         PlayerTeam playerTeam = new PlayerTeam(player);
         playerTeam.setName(username + "的队伍");
@@ -36,7 +38,6 @@ public class Game {
         hero.learnSkill(new Heal());
         playerTeam.addCharacter(hero);
         player.setTeam(playerTeam);
-        Skill.init();
     }
 
     /**

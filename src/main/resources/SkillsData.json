@@ -4,7 +4,7 @@
     "Multiplier": 1.0
   },
   "Heal": {
-    "Multiplier": 1.0
+    "Multiplier": 0.4
   },
   "Hit": {
     "Multiplier": 1.5

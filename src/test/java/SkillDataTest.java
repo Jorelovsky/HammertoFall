@@ -11,6 +11,6 @@ public class SkillDataTest {
     @Test
     public void testLoader(){
         SkillData.init();
-        assertEquals(3.0, SkillData.getSkillData("Smash"), 0.01);
+        assertEquals(1.0, SkillData.getSkillData("GeneralAttack"), 0.01);
     }
 }

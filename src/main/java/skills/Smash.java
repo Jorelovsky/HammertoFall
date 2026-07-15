@@ -1,17 +1,18 @@
 package skills;
 
 import characters.CharacterStatus;
+import fileloader.SkillData;
 
 public class Smash extends Skill {
-    private final double attackMultiplier = 3.0;
 
     public Smash() {
         name = "Smash";
+        Multiplier = SkillData.getSkillData(name);
         type = SkillType.ATTACK;
     }
 
     @Override
     public int processData(CharacterStatus status) {
-        return (int) ((status.defense + status.attack) * attackMultiplier);
+        return (int) ((status.defense + status.attack) * Multiplier);
     }
 }
