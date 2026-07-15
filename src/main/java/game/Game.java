@@ -25,8 +25,8 @@ public class Game {
         player = new Player();
         logger.info("请输入您的用户名喵:");
         String username = player.getPlayerInput();
-        player.init(username);
         CharacterData.init();
+        player.init(username);
         PlayerTeam playerTeam = new PlayerTeam(player);
         playerTeam.setName(username + "的队伍");
         Character hero = CharacterFactory.getCharacter("Napoleon");

@@ -2,25 +2,24 @@ package characters;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fileloader.DataLoader;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CharacterData {
-    static final String dataPath = "CharactersData.json";
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final String dataPath = "CharactersData.json";
     private static final HashMap<String, CharacterStatus> characterData = new HashMap<>();
     private final static ArrayList<String> CharacterNameList =
             new ArrayList<>();
-
     /**
      * 初始化CharacterData，读取角色数据。
      */
     public static void init() {
         JsonNode data = null;
         try {
-            data = loadData();
+            data = DataLoader.loadData(dataPath);
         } catch (Exception e) {
             //TODO:处理这个异常。
         }
@@ -46,18 +45,6 @@ public class CharacterData {
                 characterData.put(name, status);
             }
         }
-    }
-
-    /**
-     * 从Json文件中读取角色数据
-     *
-     * @return 读取到的Json文件
-     * @throws Exception
-     */
-    private static JsonNode loadData() throws Exception {
-        InputStream inputStream = Thread.currentThread().
-                getContextClassLoader().getResourceAsStream(dataPath);
-        return mapper.readTree(inputStream);
     }
 
     /**

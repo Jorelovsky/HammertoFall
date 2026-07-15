@@ -4,8 +4,7 @@ import characters.CharacterStatus;
 
 abstract public class Skill {
     protected String name;
-
-
+    protected double Multiplier;
     SkillType type;
 
     public static void init() {
