@@ -90,7 +90,7 @@ public abstract class Team {
         logger.info(name);
         for (int i = 0; i < this.characters.size(); i++) {
             Character character = this.characters.get(i);
-            logger.info("{}.{} 生命值: {}", i, character.getName(), character.getStatus().health);
+            logger.info("{}. lv{} {} 生命值: {}", i, character.getLevel(), character.getName(), character.getStatus().health);
         }
     }
 }

@@ -1,5 +1,6 @@
 package characters;
 
+import fileloader.CharacterData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import skills.Skill;
@@ -135,6 +136,17 @@ public class Character {
         this.status.maxHealth = (int) (multiplier * this.status.maxHealth);
         this.status.defense = (int) (multiplier * this.status.defense);
         this.status.fortune = (int) (multiplier * this.status.fortune);
+    }
+
+    public void levelUpto(int objectLevel){
+        this.level = objectLevel;
+        this.status = new CharacterStatus(CharacterData.getcharacterStatus(this.name));
+        double multiplier = this.getLevelMultiplier(objectLevel)/this.getLevelMultiplier(1);
+        this.status.attack = (int) (multiplier * this.status.attack);
+        this.status.maxHealth = (int) (multiplier * this.status.maxHealth);
+        this.status.defense = (int) (multiplier * this.status.defense);
+        this.status.fortune = (int) (multiplier * this.status.fortune);
+        this.status.health = this.status.maxHealth;
     }
 
     /**

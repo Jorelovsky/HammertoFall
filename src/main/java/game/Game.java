@@ -39,6 +39,7 @@ public class Game {
         hero.learnSkill(new Smash());
         hero.learnSkill(new Hit());
         hero.learnSkill(new Heal());
+        hero.levelUpto(50);
         playerTeam.addCharacter(hero);
         player.setTeam(playerTeam);
     }

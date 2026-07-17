@@ -16,16 +16,14 @@ public class CharacterTest {
         CharacterData.init();
         SkillData.init();
         Character character = EnemyBuilder.buildEnemyforTest();
-        while(Boolean.TRUE)
+        int level = 1;
+        while(level < 100)
         {
-            try{
-                character.levelUp();
-                CharacterStatus status = character.getStatus();
-                logger.info("Level:{} Attack:{} Defense:{} MaxHealth:{} Fortune:{}",
-                        character.getLevel(),status.attack, status.defense, status.maxHealth, status.fortune);
-            }catch (IllegalArgumentException e){
-                return;
-            }
+            character.levelUpto(level);
+            CharacterStatus status = character.getStatus();
+            logger.info("Level:{} Attack:{} Defense:{} MaxHealth:{} Fortune:{}",
+                    character.getLevel(),status.attack, status.defense, status.maxHealth, status.fortune);
+            level++;
         }
     }
 }
