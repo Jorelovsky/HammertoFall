@@ -7,12 +7,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SkillData {
+    private static boolean INIT_LOCK = false;
     private static final String dataPath = "SkillsData.json";
     private static final HashMap<String, Double> skillData = new HashMap<>();
     private final static ArrayList<String> skillNameList =
             new ArrayList<>();
 
     public static void init(){
+        if(INIT_LOCK) return;
+        INIT_LOCK = true;
         JsonNode data = null;
         try {
             data = DataLoader.loadData(dataPath);

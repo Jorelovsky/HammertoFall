@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CharacterData {
+    private static boolean INIT_LOCK = false;
     private static final String dataPath = "CharactersData.json";
     private static final HashMap<String, CharacterStatus> characterData = new HashMap<>();
     private final static ArrayList<String> characterNameList =
@@ -15,6 +16,8 @@ public class CharacterData {
      * 初始化CharacterData，读取角色数据。
      */
     public static void init() {
+        if(INIT_LOCK) return;
+        INIT_LOCK = true;
         JsonNode data = null;
         try {
             data = DataLoader.loadData(dataPath);

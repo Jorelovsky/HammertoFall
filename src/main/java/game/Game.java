@@ -15,6 +15,7 @@ import teams.PlayerTeam;
 public class Game {
     private Player player;
     private static final Logger logger = LoggerFactory.getLogger(Game.class);
+    private static boolean INIT_LOCK = false;
 
     public Game() {
     }
@@ -23,6 +24,8 @@ public class Game {
      * 初始化游戏
      */
     public void init() {
+        if(INIT_LOCK) return;
+        INIT_LOCK = true;
         player = new Player();
         logger.info("请输入您的用户名喵:");
         String username = player.getPlayerInput();
@@ -55,5 +58,6 @@ public class Game {
      */
     public void end() {
         player.destroy();
+        INIT_LOCK = false;
     }
 }

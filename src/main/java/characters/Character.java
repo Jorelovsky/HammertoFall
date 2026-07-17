@@ -113,9 +113,14 @@ public class Character {
      * @param nowLevel 当前等级
      * @return 升级增益倍率
      */
-    public double getLevelUpMultiplier(int nowLevel) {
+    private double getLevelUpMultiplier(int nowLevel) {
         if (nowLevel >= MAX_LEVEL) throw new IllegalArgumentException("你已经满级了");
-        return 1.1;//默认的升级属性增益倍率。
+        return getLevelMultiplier(nowLevel)/getLevelMultiplier(nowLevel - 1);//默认的升级属性增益倍率。
+    }
+
+    private double getLevelMultiplier(int nowLevel) {
+        if (nowLevel >= MAX_LEVEL) throw new IllegalArgumentException("你已经满级了");
+        return 0.1 * nowLevel + 0.9;
     }
 
     //TODO:改成private
@@ -124,12 +129,12 @@ public class Character {
      * 角色升级
      */
     public void levelUp() {
+        this.level++;
         double multiplier = this.getLevelUpMultiplier(this.level);
         this.status.attack = (int) (multiplier * this.status.attack);
         this.status.maxHealth = (int) (multiplier * this.status.maxHealth);
         this.status.defense = (int) (multiplier * this.status.defense);
         this.status.fortune = (int) (multiplier * this.status.fortune);
-        this.level++;
     }
 
     /**

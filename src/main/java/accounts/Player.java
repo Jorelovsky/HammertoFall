@@ -8,6 +8,7 @@ import java.util.Scanner;
 import org.slf4j.Logger;
 
 public class Player {
+    private static boolean INIT_LOCK = false;
     private String playerName;
     private Team team;
     private final Scanner inputScanner = new Scanner(System.in);
@@ -22,12 +23,15 @@ public class Player {
      * @param playerName 新建用户名
      */
     public void init(String playerName) {
+        if(INIT_LOCK) return;
+        INIT_LOCK = true;
         this.playerName = playerName;
         logger.info("{}加入战场喵。", playerName);
     }
 
     public void destroy() {
         inputScanner.close();
+        INIT_LOCK = false;
     }
 
     /**
