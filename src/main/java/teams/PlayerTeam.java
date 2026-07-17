@@ -28,7 +28,7 @@ public class PlayerTeam extends Team {
         int i = 0;
         while (i < characters.size()) {
             Character character = characters.get(i);
-            if(!character.isAlive()) {
+            if (!character.isAlive()) {
                 i++;
                 continue;
             }

@@ -24,7 +24,7 @@ public class Game {
      * 初始化游戏
      */
     public void init() {
-        if(INIT_LOCK) return;
+        if (INIT_LOCK) return;
         INIT_LOCK = true;
         player = new Player();
         logger.info("请输入您的用户名喵:");

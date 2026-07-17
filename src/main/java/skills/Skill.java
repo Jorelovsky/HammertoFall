@@ -6,6 +6,7 @@ abstract public class Skill {
     protected String name;
     protected double Multiplier;
     SkillType type;
+
     /**
      * 获取技能名称
      *

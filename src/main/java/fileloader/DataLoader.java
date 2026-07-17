@@ -7,6 +7,7 @@ import java.io.InputStream;
 
 public class DataLoader {
     protected static final ObjectMapper mapper = new ObjectMapper();
+
     /**
      * 从Json文件中读取角色数据
      *

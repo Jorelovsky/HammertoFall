@@ -1,5 +1,10 @@
 {
-  "name": ["GeneralAttack", "Heal", "Hit", "Smash"],
+  "name": [
+    "GeneralAttack",
+    "Heal",
+    "Hit",
+    "Smash"
+  ],
   "GeneralAttack": {
     "Multiplier": 1.0
   },

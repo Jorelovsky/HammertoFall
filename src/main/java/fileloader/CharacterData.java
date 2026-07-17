@@ -12,11 +12,12 @@ public class CharacterData {
     private static final HashMap<String, CharacterStatus> characterData = new HashMap<>();
     private final static ArrayList<String> characterNameList =
             new ArrayList<>();
+
     /**
      * 初始化CharacterData，读取角色数据。
      */
     public static void init() {
-        if(INIT_LOCK) return;
+        if (INIT_LOCK) return;
         INIT_LOCK = true;
         JsonNode data = null;
         try {

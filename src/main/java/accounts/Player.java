@@ -23,7 +23,7 @@ public class Player {
      * @param playerName 新建用户名
      */
     public void init(String playerName) {
-        if(INIT_LOCK) return;
+        if (INIT_LOCK) return;
         INIT_LOCK = true;
         this.playerName = playerName;
         logger.info("{}加入战场喵。", playerName);

@@ -13,8 +13,8 @@ public class SkillData {
     private final static ArrayList<String> skillNameList =
             new ArrayList<>();
 
-    public static void init(){
-        if(INIT_LOCK) return;
+    public static void init() {
+        if (INIT_LOCK) return;
         INIT_LOCK = true;
         JsonNode data = null;
         try {
@@ -25,20 +25,21 @@ public class SkillData {
         if (data != null) {
             JsonNode nameList;
             nameList = data.path("name");
-            if(nameList.isArray()){
-                for(JsonNode name: nameList){
+            if (nameList.isArray()) {
+                for (JsonNode name : nameList) {
                     skillNameList.add(name.asText());
                 }
-            }else {
+            } else {
                 throw new RuntimeException("文件不完整");
             }
-            for (String name:skillNameList){
+            for (String name : skillNameList) {
                 Double multiplier = data.path(name).path("Multiplier").asDouble();
                 skillData.put(name, multiplier);
             }
         }
     }
-    public static Double getSkillData(String name){
+
+    public static Double getSkillData(String name) {
         return skillData.get(name);
     }
 }

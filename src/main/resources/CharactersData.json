@@ -1,5 +1,8 @@
 {
-  "name": ["Involver", "Napoleon"],
+  "name": [
+    "Involver",
+    "Napoleon"
+  ],
   "Involver": {
     "maxHealth": 1000,
     "attack": 50,

@@ -116,7 +116,7 @@ public class Character {
      */
     private double getLevelUpMultiplier(int nowLevel) {
         if (nowLevel >= MAX_LEVEL) throw new IllegalArgumentException("你已经满级了");
-        return getLevelMultiplier(nowLevel)/getLevelMultiplier(nowLevel - 1);//默认的升级属性增益倍率。
+        return getLevelMultiplier(nowLevel) / getLevelMultiplier(nowLevel - 1);//默认的升级属性增益倍率。
     }
 
     private double getLevelMultiplier(int nowLevel) {
@@ -138,10 +138,10 @@ public class Character {
         this.status.fortune = (int) (multiplier * this.status.fortune);
     }
 
-    public void levelUpto(int objectLevel){
+    public void levelUpto(int objectLevel) {
         this.level = objectLevel;
         this.status = new CharacterStatus(CharacterData.getcharacterStatus(this.name));
-        double multiplier = this.getLevelMultiplier(objectLevel)/this.getLevelMultiplier(1);
+        double multiplier = this.getLevelMultiplier(objectLevel) / this.getLevelMultiplier(1);
         this.status.attack = (int) (multiplier * this.status.attack);
         this.status.maxHealth = (int) (multiplier * this.status.maxHealth);
         this.status.defense = (int) (multiplier * this.status.defense);

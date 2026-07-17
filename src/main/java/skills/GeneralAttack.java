@@ -12,6 +12,6 @@ public class GeneralAttack extends Skill {
 
     @Override
     public int processData(CharacterStatus status) {
-        return (int)(status.attack * Multiplier);
+        return (int) (status.attack * Multiplier);
     }
 }

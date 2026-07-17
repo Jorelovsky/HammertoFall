@@ -14,7 +14,7 @@ public class EnemyTeam extends Team {
         for (Character character : characters) {
             //TODO:优化敌人出招逻辑。
             //敌人从已有技能中随机出招。
-            if(!character.isAlive()) continue;
+            if (!character.isAlive()) continue;
             skill = character.getSkill((int) Math.floor(Math.random()
                     * (character.getSkillsNumber())));
             int skillImpact = skill.processData(character.getStatus());

@@ -8,8 +8,9 @@ import static org.junit.Assert.assertNotNull;
 
 public class SkillDataTest {
     private static final Logger logger = LoggerFactory.getLogger(SkillDataTest.class);
+
     @Test
-    public void testLoader(){
+    public void testLoader() {
         SkillData.init();
         assertEquals(1.0, SkillData.getSkillData("GeneralAttack"), 0.01);
     }

@@ -4,7 +4,7 @@ import fileloader.CharacterData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Napoleon extends Character{
+public class Napoleon extends Character {
     private static final Logger logger = LoggerFactory.getLogger(Involver.class);
 
     public Napoleon() {
